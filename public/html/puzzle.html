@@ -7,11 +7,11 @@
 	</script>
 </head>
  
-<body onload="init();">
+<body >
 	<p>Puzzle game</p>
 	<canvas id="canvas"></canvas>
-	<form id="uploadbanner" enctype="multipart/form-data" method="post" action="/">
-		<input id="fileupload" name="myfile" type="file" />
+	<form id="picUpload" enctype="multipart/form-data" method="post" action="/api/upload">
+		<input id="fileupload" name="pic" type="file" />
 		<input type="submit" value="submit" id="submit" />
 	</form>
 </body>
