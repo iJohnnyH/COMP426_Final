@@ -2,8 +2,6 @@ var express = require('express')
 var multer = require('multer')
 var path = require('path')
 
-global.__rootdir = __dirname
-
 const app = express()
 
 var storage = multer.diskStorage({
@@ -32,6 +30,11 @@ app.post('/api/upload', upload.single('pic'), (req, res) => {
 		return res.send({success: true})
 	}
 });
+
+app.get('/login', function(req,res){
+	res.sendFile('public/html/login.html', { root: __dirname })
+	
+})
 
 app.listen(8000,function(){
 	console.log('Running on localhost:8000');
