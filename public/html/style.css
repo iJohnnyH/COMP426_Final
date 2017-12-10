@@ -12,6 +12,12 @@ body{background-color:#99badd;
 	font-size: 12px;
 }
 
+#picUpload:hover{
+	border-color:#34495e;
+	transition:all .2s ease-in-out;
+	-moz-transition:all .2s ease-in-out;
+	-webkit-transition:all .2s ease-in-out;
+	-o-transition:all .2s ease-in-out;}
 #fileupload{
 	background:#dce4ec;
  	padding:0 10px;
