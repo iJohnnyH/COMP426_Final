@@ -1,0 +1,13 @@
+
+body{background-color:#99badd;
+	font-family: "Moiser", sans-serif;
+}
+
+input.file {
+	position: relative;
+	text-align: right;
+	-moz-opacity:0 ;
+	filter:alpha(opacity: 0);
+	opacity: 0;
+	z-index: 2;
+}
