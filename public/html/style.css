@@ -23,38 +23,3 @@ input[type=submit]{
 
 
 }
-#picUpload {
-	position: relative;
-	align: right;
-	display: block;
-	text-align: center;
-	font-family: Helvetica, Arial, sans-serif;
-	font-size: 12px;
-}
-
-#picUpload:hover{
-	border-color:#34495e;
-	transition:all .2s ease-in-out;
-	-moz-transition:all .2s ease-in-out;
-	-webkit-transition:all .2s ease-in-out;
-	-o-transition:all .2s ease-in-out;
-}
-#fileupload{
-	background:#dce4ec;
- 	padding:0 10px;
- 	display:inline-block;
- 	height:40px;
- 	line-height:40px;
-}
-#picUpload:hover #fileupload{
-	background:#34495e;
-	color:#FFFFFF;
-	transition:all .2s ease-in-out;
-	-moz-transition:all .2s ease-in-out;
-	-webkit-transition:all .2s ease-in-out;
-	-o-transition:all .2s ease-in-out;
-}
-
-
-	
-
