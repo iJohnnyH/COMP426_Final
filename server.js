@@ -68,7 +68,7 @@ app.get('/login', function(req,res){
 })
 
 
-//Start app
+//Start app @ localhost:8000
 app.listen(8000,function(){
 	console.log('Running on localhost:8000');
 })
