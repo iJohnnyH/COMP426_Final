@@ -2,13 +2,13 @@
 <html>
 <head>
 	<title>HTML5 Puzzle</title>
-	<script>
-	</script>
+	<script src = '../script.js'></script>
 </head>
  
-<body >
+<body>
 	<p>Puzzle game</p>
-	<img src="../images/kmp.jpg" alt="kmp" height="42" width="42">	
+	<select id = 'picSelect'></select>
+	<img src="../images/kmp.jpg" alt="kmp" height="100" width="100">	
 	<canvas id="canvas"></canvas>
 	<form id="picUpload" enctype="multipart/form-data" method="post" action="/api/upload">
 		<input id="fileupload" name="pic" type="file" />
