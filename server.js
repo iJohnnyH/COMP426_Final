@@ -16,6 +16,8 @@ var storage = multer.diskStorage({
 
 var upload = multer({storage: storage})
 
+app.use(express.static('public'))
+
 app.get('/', function(req,res){
 	res.sendFile('public/html/puzzle.html', { root: __dirname })
 })

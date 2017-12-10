@@ -1,0 +1,6 @@
+Dennis
+Make a popup "game over / play again" interface
+scores for clicks
+high score mechanism in js
+set a maximum size for pictures
+	rescale if necessary

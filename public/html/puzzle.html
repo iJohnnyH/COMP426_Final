@@ -2,11 +2,10 @@
 <html>
 <head>
 	<title>HTML5 Puzzle</title>
-	<script>
-	</script>
+	<script src="../js/puzzle.js"></script>
 </head>
  
-<body >
+<body onload="init()" >
 	<p>Puzzle game</p>
 	<canvas id="canvas"></canvas>
 	<form id="picUpload" enctype="multipart/form-data" method="post" action="/api/upload">
