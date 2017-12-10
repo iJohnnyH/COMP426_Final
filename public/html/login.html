@@ -15,7 +15,7 @@ input[type=text], input[type=password] {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #4c7daf;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -27,6 +27,9 @@ button {
 button:hover {
     opacity: 0.8;
 }
+h2{
+    font-family: "Titillium", sans-serif;
+}
 </style>
 
 <body>
@@ -34,9 +37,6 @@ button:hover {
 <h2>Login Form</h2>
 
 <form action="/action_page.php">
-  <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-  </div>
 
   <div class="container">
     <label><b>Username</b></label>
@@ -46,12 +46,10 @@ button:hover {
     <input type="password" placeholder="Enter Password" name="psw" required>
         
     <button type="submit">Login</button>
-    <input type="checkbox" checked="checked"> Remember me
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
     <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
   </div>
 </form>
 
