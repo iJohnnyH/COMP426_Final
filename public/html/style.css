@@ -3,6 +3,26 @@ body{background-color:#99badd;
 	font-family: "Titillium", sans-serif;
 }
 
+input[type=file]{
+	width: 40%;
+   	padding: 12px 20px;
+   	margin: 8px 0;
+    	box-sizing: border-box;
+	font-family: "Titillium", sans-serif;
+
+}
+
+input[type=submit]{	
+	width: 40%;
+	height: 20%;
+   	padding: 12px 20px;
+   	margin: 8px 0;
+    	box-sizing: border-box;
+	background-color: blue;
+	font-family: "Titillium", sans-serif;
+
+
+}
 #picUpload {
 	position: relative;
 	align: right;
@@ -35,21 +55,6 @@ body{background-color:#99badd;
 	-o-transition:all .2s ease-in-out;
 }
 
-input[type=file]{
-	width: 100%;
-   	padding: 12px 20px;
-   	margin: 8px 0;
-    	box-sizing: border-box;
-}
 
-input[type=submit]{	
-	width: 40%;
-	height: 20%;
-   	padding: 12px 20px;
-   	margin: 8px 0;
-    	box-sizing: border-box;
-	background-color: blue;
-
-}
 	
 
