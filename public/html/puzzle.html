@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-	<title>TilePuzzle</title>
-	<script>
-	</script>
-<link rel= "stylesheet" href = "style.css">
-
+	<title>HTML5 Puzzle</title>
+	<script src="../js/puzzle.js"></script>
+  <link rel= "stylesheet" href = "style.css">
 </head>
 	
 <h1>TilePuzzle</h1>
 
- 
-<body >
+
+<body onload="init()" >
+	<p>Puzzle game</p>
 	<canvas id="canvas"></canvas>
 	<form id="picUpload" enctype="multipart/form-data" method="post" action="/api/upload">
 		<input id="fileupload" name="pic" type="file" size = "70"/>
