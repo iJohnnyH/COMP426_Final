@@ -1,7 +1,6 @@
 var express = require('express')
 var multer = require('multer')
 var path = require('path')
-var mongo = require('mongodb')
 
 const app = express()
 
