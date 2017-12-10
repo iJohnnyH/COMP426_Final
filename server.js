@@ -16,6 +16,8 @@ var storage = multer.diskStorage({
 
 var upload = multer({storage: storage})
 
+app.use(express.static('public'))
+
 //Schema and model for database
 var pictureSchema = mongoose.Schema({
 	filepath: String
