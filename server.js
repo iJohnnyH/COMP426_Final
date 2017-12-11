@@ -2,6 +2,7 @@ var express = require('express')
 var multer = require('multer')
 var path = require('path')
 var mongoose = require('mongoose')
+var fs = require('fs')
 
 const app = express()
 
@@ -16,9 +17,12 @@ var storage = multer.diskStorage({
 
 var upload = multer({storage: storage})
 
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')))
 
 //Schema and model for database
+//User
+
+//Picture
 var pictureSchema = mongoose.Schema({
 	filepath: String
 })
@@ -61,6 +65,14 @@ app.post('/api/upload', upload.single('pic'), (req, res) => {
 		return res.send({success: true})
 	}
 });
+
+app.get('/api/images', function(req, res){
+	var fileList = ""
+	fs.readdirSync('./public/images').forEach(file => {
+		fileList.push(file)
+	})
+	res = 'test';
+})
 
 //Login page
 app.get('/login', function(req,res){
