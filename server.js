@@ -67,11 +67,13 @@ app.post('/api/upload', upload.single('pic'), (req, res) => {
 });
 
 app.get('/api/images', function(req, res){
-	var fileList = ""
+	var fileList = [];
 	fs.readdirSync('./public/images').forEach(file => {
-		fileList.push(file)
+		//Ignore hidden file created by OSX
+		if (file != '.DS_Store')
+			fileList.push(file)
 	})
-	res = 'test';
+	res.send(fileList)
 })
 
 //Login page
