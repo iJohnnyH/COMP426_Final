@@ -3,6 +3,8 @@ var multer = require('multer')
 var path = require('path')
 var mongoose = require('mongoose')
 var fs = require('fs')
+var passport = require('passport')
+, FacebookStrategy = require('passport-facebook').Strategy;
 
 const app = express()
 
@@ -36,6 +38,18 @@ db.once('open', function() {
 	console.log('Connected to database')
 });
 
+passport.use(new FacebookStrategy({
+    clientID: '1931153717204962',
+    clientSecret: '2b0fd0069d9223f7d5adfeefd07e00e1',
+    callbackURL: "http://localhost:8000/"
+  },
+  function(accessToken, refreshToken, profile, cb) {
+    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
+
 //API Routes
 
 //Homepage
@@ -66,6 +80,7 @@ app.post('/api/upload', upload.single('pic'), (req, res) => {
 	}
 });
 
+//Send names of images in /images
 app.get('/api/images', function(req, res){
 	var fileList = [];
 	fs.readdirSync('./public/images').forEach(file => {
@@ -79,6 +94,18 @@ app.get('/api/images', function(req, res){
 //Login page
 app.get('/login', function(req,res){
 	res.sendFile('public/html/login.html', { root: __dirname })
+})
+
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+app.get('/auth/facebook/callback',
+	passport.authenticate('facebook', {failureRedirect: '/login'}),
+	function(req,res){
+		res.redirect('/')
+	});
+
+app.get('/login/register', function(req,res){
+	res.sendFile('public/html/register.html', { root: __dirname })
 })
 
 
