@@ -97,7 +97,7 @@ input[type=submit]{
  /* Modal Header */
 .modal-header {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: #99badd;
     color: white;
     text-align: center;
 }
@@ -107,8 +107,8 @@ input[type=submit]{
 
 /* Modal Footer */
 .modal-footer {
-    padding: 2px 16px;
-    background-color: #5cb85c;
+    padding: 20px 16px;
+    background-color: #99badd;
     color: white;
     text-align: center;
 }
@@ -132,3 +132,25 @@ input[type=submit]{
     from {top: -300px; opacity: 0}
     to {top: 25%; opacity: 1}
 } 
+
+/* playAgain button in modal */
+#playAgain {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #ADD8E6;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+#playAgain:hover {background-color: #34495e}
+
+#playAgain:active {
+  background-color: #34495e;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
