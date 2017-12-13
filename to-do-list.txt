@@ -4,3 +4,10 @@ scores for clicks
 high score mechanism in js
 set a maximum size for pictures
 	rescale if necessary
+
+Johnny
+	Top (3?) highscores for a specific image
+	BUGS
+		Puzzle not intializing on server start (GET ERROR 404)
+	Redirection
+		What page to show after login/registration/logout/etc.
