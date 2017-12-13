@@ -1,13 +1,4 @@
-canvas{
-    display: flex;
-    align-content: center;
-}
-p{
-    text-align: center;
-}
-h1{
-    text-align: center;
-}
+
 
 body{background-color:#99badd;
 	font-family: "Titillium", sans-serif;

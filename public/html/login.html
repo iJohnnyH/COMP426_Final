@@ -3,18 +3,18 @@
 <style>
 body{background-color:#99badd;
 	font-family: "Titillium", sans-serif;
-}
+  }
     
-form {
+/*form {
     border: 3px solid #f1f1f1;
-}
+}*/
 
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: none;
     box-sizing: border-box;
 }
 
@@ -25,7 +25,9 @@ button {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 40%;
+    width: 33.33%;
+margin-right30px;
+   float:left;
 }
 
 button:hover {
@@ -33,8 +35,15 @@ button:hover {
 }
 h2{
     font-family: "Titillium", sans-serif;
+	text-align: center;
 }
-    label{font-family: "Titillium", sans-serif;}
+label{font-family: "Titillium", sans-serif;
+	display: flex;
+	align-content: center;}
+	
+input.placeholder{
+	  text-align:center;
+}
 </style>
 
 <body>
@@ -45,18 +54,20 @@ h2{
   <div class="container">
     <label><b>Email</b></label>
     <input type="text" placeholder="Enter Email" name="email" required>
-
+	  
     <label><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="password" required>
     <button type="submit">Login</button>
   </div>
 
-  <div class="container" style="background-color:#f1f1f1">
+  <div class="container">
     <button type="button" class="cancelbtn">Cancel</button>
   </div>
 </form>
 
-<a href="/login/register">Register</a>
+<a href="/login/register">
+	<button type = "button">Register</button>
+</a>
 
 </body>
 </html>
