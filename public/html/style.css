@@ -67,7 +67,7 @@ input[type=submit]{
   height: 370px;
   font-family:"Roboto";
   
-  > div {
+  > #picSelect {
     padding: 15px 20px;
     position: absolute;
     width: 100%;
@@ -84,18 +84,18 @@ input[type=submit]{
       $num: $num - 1;
   }
   
-  > div.input {
+  > #picSelect.input {
     background: #fff;
     color: #777;
     border-radius: 2px;
     box-shadow: 0 2px 15px 3px rgba(0, 0, 0, 0.1) 
   }
   
-  > div.input.active {
+  > #picSelect.input.active {
     color: #1D77EF;
   }
   
-  > div.input-preview {
+  > #picSelect.input-preview {
     color: rgba(255,255,255,.75);;
     position: relative;
     transition: .3s all ease;
