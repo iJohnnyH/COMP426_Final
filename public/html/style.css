@@ -21,8 +21,15 @@ input[type=submit]{
     	box-sizing: border-box;
 	background:#ADD8E6;
 	font-family: "Titillium", sans-serif;
+}
 
-
+input[type=text], input[type=password], input[type=submit] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    box-sizing: border-box;
 }
 
 #picUpload {
