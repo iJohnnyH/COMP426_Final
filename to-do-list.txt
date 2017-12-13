@@ -11,3 +11,4 @@ Johnny
 		Puzzle not intializing on server start (GET ERROR 404)
 	Redirection
 		What page to show after login/registration/logout/etc.
+	On server start, add all images to db
