@@ -229,17 +229,30 @@ function resetPuzzleAndCheckWin(){
 }
 
 function gameOver(){
-	/*var score = {
+	var score = {
 		image: imgPath,
-		moves: moves
+		moves: move
 	}
 	$.ajax({
-		url: '/game/highscore',
-		method: 'POST',
+		url: "/game/highscore",
+		method: "POST",
 		data: JSON.stringify(score),
-		contentType: "application/json; charset=utf-8",
-		data: score
-	})*/
+		contentType: "application/json",
+		success: function(data){
+			var image = {
+				image: imgPath
+			}
+			$.ajax({
+				url: "/game/highscore",
+				method: "GET",
+				data: JSON.stringify(image),
+				contentType: "application/json",
+				success: function(data){
+					
+				}
+			})
+		}
+	})
 	document.onmousedown = null;
 	document.onmousemove = null;
 	document.onmouseup = null;
