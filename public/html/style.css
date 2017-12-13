@@ -4,6 +4,14 @@ body{background-color:#99badd;
 	font-family: "Titillium", sans-serif;
 }
 
+canvas{
+	display:flex;
+	align-content:center;
+}
+h1{
+	text-align:center;
+}
+
 input[type=file]{
 	width: 60%;
    	padding: 12px 20px;
