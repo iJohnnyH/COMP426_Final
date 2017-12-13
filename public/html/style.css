@@ -4,6 +4,14 @@ body{background-color:#99badd;
 	font-family: "Titillium", sans-serif;
 }
 
+canvas{
+	display:flex;
+	align-content:center;
+}
+h1{
+	text-align:center;
+}
+
 input[type=file]{
 	width: 60%;
    	padding: 12px 20px;
@@ -21,8 +29,15 @@ input[type=submit]{
     	box-sizing: border-box;
 	background:#ADD8E6;
 	font-family: "Titillium", sans-serif;
+}
 
-
+input[type=text], input[type=password], input[type=submit] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    box-sizing: border-box;
 }
 
 #picUpload {
@@ -56,7 +71,16 @@ input[type=submit]{
 	-o-transition:all .2s ease-in-out;
 }
 
- /* The Modal (background) */
+button{
+	width: 20%;
+	height: 20%;
+   	padding: 12px 20px;
+   	margin: 8px 0;
+    	box-sizing: border-box;
+	background:#ADD8E6;
+	font-family: "Titillium", sans-serif;
+
+  /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
