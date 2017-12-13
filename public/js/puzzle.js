@@ -229,20 +229,17 @@ function resetPuzzleAndCheckWin(){
 }
 
 function gameOver(){
-	var score = {
+	/*var score = {
 		image: imgPath,
 		moves: moves
 	}
-	alert(move);
 	$.ajax({
 		url: '/game/highscore',
 		method: 'POST',
 		data: JSON.stringify(score),
 		contentType: "application/json; charset=utf-8",
-		data: score,
-		success: function(data){
-		}
-	})
+		data: score
+	})*/
 	document.onmousedown = null;
 	document.onmousemove = null;
 	document.onmouseup = null;
