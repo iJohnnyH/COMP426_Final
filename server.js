@@ -4,6 +4,8 @@ var path = require('path')
 var mongoose = require('mongoose')
 var fs = require('fs')
 var User = require('./models/user.js')
+var Picture = require('./models/picture.js')
+var Score = require('./models/score.js')
 var bodyParser = require('body-parser')
 var session = require('express-session');
 
@@ -30,12 +32,6 @@ app.use(bodyParser.urlencoded({// to support URL-encoded bodies
 
 //Schema and model for database
 
-//Picture
-var pictureSchema = mongoose.Schema({
-	filepath: String
-})
-var Picture = mongoose.model('Picture',pictureSchema)
-
 //Connect to mongodb
 mongoose.connect('mongodb://localhost/test');
 var db = mongoose.connection;
@@ -60,7 +56,7 @@ app.get('/', function(req,res){
 //Upload button
 app.post('/api/upload', upload.single('pic'), (req, res) => {
 	if (!req.file) {
-		onsole.log("No file received");
+		console.log("No file received");
 		return res.send({success: false});
 	} else {
 		//Save to db
@@ -71,7 +67,7 @@ app.post('/api/upload', upload.single('pic'), (req, res) => {
 			if (err) console.log(error);
 			else console.log('Saved to db succesfully:', comment)
 		})
-		return res.send({success: true})
+		res.sendFile('public/html/puzzle.html', { root: __dirname })
 	}
 });
 
@@ -98,7 +94,6 @@ app.get('/login/register', function(req,res){
 
 //Login user
 app.post('/login', function(req,res, next){
-
 	if (req.body.email && req.body.password) {
 		User.authenticate(req.body.email, req.body.password, function (error, user) {
 			if (error || !user) {
@@ -135,8 +130,7 @@ app.post('/login/register', function (req, res, next) {
 			if (error) {
 				res.send('error in creation')
 			} else {
-				req.session.userId = user._id;
-				return res.redirect('/');
+				return res.redirect('/login');
 			}
 		});
 	}
@@ -149,7 +143,7 @@ app.get('/logout', function (req, res, next) {
 		if (err) {
 			return next(err);
 		} else {
-			return res.redirect('/');
+			return res.redirect('/login');
 		}
 	  });
 	}
@@ -166,11 +160,56 @@ app.get('/game', function (req, res, next) {
 			err.status = 400;
 			return res.redirect('/login')
 		  } else {
-			return 	res.sendFile('public/html/puzzle.html', { root: __dirname })			
+			res.sendFile('public/html/puzzle.html', { root: __dirname })
 		  }
 		}
 	  });
-  });
+});
+
+app.get('/game/highscore', function(req,res,next){
+	var scores = {}
+	Score.find({'filepath' : req.body.image}).sort([score, -1]).exec(function(err, Score){
+		console.log(score)
+	})
+})
+
+app.post('/game/highscore', function(req, res, next){
+	//Check for valid login id
+	User.findById(req.session.userId)
+	.exec(function (error, user) {
+		//Some error with database searching
+		if (error) {
+			return next(error);
+		} else {
+			//No user found in db
+			if (user === null) {
+			var err = new Error('Login required for highscore!');
+			err.status = 400;
+			return res.redirect('/login')
+		} else {
+			//User found
+			Picture.findOne({'filepath' : req.body.image}, '_id', function(err, pic){
+				if (pic == null){
+					var err = new Error('file not found in db!')
+					next(error)
+				}
+				var score = new Score({
+					user: req.session.userId,
+					score: req.body.moves,
+					picture: pic._id
+				})
+				score.save(function(err){
+					if (err) console.log(err)
+					else{
+						res.sendStatus(200)
+						console.log('new score recorded')
+					}
+				})
+			})
+		  }
+		}
+	});
+})
 
 //Start app @ localhost:8000
 app.listen(8000,function(){

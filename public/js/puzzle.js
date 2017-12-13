@@ -1,5 +1,7 @@
 const PUZZLE_DIFFICULTY = 4;
 const PUZZLE_HOVER_TINT = '#009900';
+
+var imgPath;
  
 var canvas;
 var stage;
@@ -15,18 +17,21 @@ var currentDropPiece;
  
 var mouse;
 
+var move;
+
 function init(){
 	img = new Image();
 	img.addEventListener("load", onImage, false);
 	var select = document.getElementById('picSelect');
-	var imagePath = select.value;
-	img.src = "../images/" + imagePath;
+	imgPath = select.value;
+	img.src = "../images/" + imgPath;
 }
 
 function initGame(path){
 	img = new Image();
 	img.addEventListener("load", onImage, false);
 	img.src = "../images/" + path;
+	imgPath = path;
 }
 
 function onImage(e){
@@ -46,6 +51,7 @@ function setCanvas(){
 }
 
 function initPuzzle(){
+	move = 0;
 	pieces = [];
 	mouse = {x:0,y:0};
 	currentPiece = null;
@@ -191,6 +197,7 @@ function updatePuzzle(e){
 }
 
 function pieceDropped(e){
+	move++;
 	document.onmousemove = null;
 	document.onmouseup = null;
 	if(currentDropPiece != null){
@@ -222,6 +229,30 @@ function resetPuzzleAndCheckWin(){
 }
 
 function gameOver(){
+	var score = {
+		image: imgPath,
+		moves: move
+	}
+	$.ajax({
+		url: "/game/highscore",
+		method: "POST",
+		data: JSON.stringify(score),
+		contentType: "application/json",
+		success: function(data){
+			var image = {
+				image: imgPath
+			}
+			$.ajax({
+				url: "/game/highscore",
+				method: "GET",
+				data: JSON.stringify(image),
+				contentType: "application/json",
+				success: function(data){
+					
+				}
+			})
+		}
+	})
 	document.onmousedown = null;
 	document.onmousemove = null;
 	document.onmouseup = null;
@@ -237,7 +268,7 @@ function updatePicSelect(){
 		method: 'GET',
 		success: function(response){
 			for (i = 0; i < response.length; i++){
-				select.innerHTML += '<option value = ' + response[i] + '>' + response[i] + '</option>';				
+				select.innerHTML += '<option value = ' + response[i] + '>' + response[i] + '</option>';
 			}
 		}
 	})
