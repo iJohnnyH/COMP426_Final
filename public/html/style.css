@@ -58,7 +58,7 @@ input[type=submit]{
 	-o-transition:all .2s ease-in-out;
 }
 
-//drop down pic menu
+//drop down
 
 #picSelect{
   @include position(absolute, 50% x x 50%);
