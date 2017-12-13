@@ -60,7 +60,7 @@ app.get('/', function(req,res){
 //Upload button
 app.post('/api/upload', upload.single('pic'), (req, res) => {
 	if (!req.file) {
-		onsole.log("No file received");
+		console.log("No file received");
 		return res.send({success: false});
 	} else {
 		//Save to db
@@ -71,7 +71,7 @@ app.post('/api/upload', upload.single('pic'), (req, res) => {
 			if (err) console.log(error);
 			else console.log('Saved to db succesfully:', comment)
 		})
-		return res.send({success: true})
+		res.sendFile('public/html/puzzle.html', { root: __dirname })
 	}
 });
 
@@ -98,7 +98,6 @@ app.get('/login/register', function(req,res){
 
 //Login user
 app.post('/login', function(req,res, next){
-
 	if (req.body.email && req.body.password) {
 		User.authenticate(req.body.email, req.body.password, function (error, user) {
 			if (error || !user) {
@@ -166,11 +165,35 @@ app.get('/game', function (req, res, next) {
 			err.status = 400;
 			return res.redirect('/login')
 		  } else {
-			return 	res.sendFile('public/html/puzzle.html', { root: __dirname })			
+			return 	res.sendFile('public/html/puzzle.html', { root: __dirname })
 		  }
 		}
 	  });
-  });
+});
+
+app.post('/game/highscore', function(req, res, next){
+	/*User.findById(req.session.userId)
+	.exec(function (error, user) {
+		if (error) {
+		  return next(error);
+		} else {
+		  if (user === null) {
+			var err = new Error('Login required for highscore!');
+			err.status = 400;
+			return res.redirect('/login')
+		  } else {
+			User.create(userData, function (error, user) {
+				if (error) {
+					res.send('error in creation')
+				} else {
+					req.session.userId = user._id;
+					return res.redirect('/');
+				}
+			});
+		  }
+		}
+	  });*/
+})
 
 //Start app @ localhost:8000
 app.listen(8000,function(){
