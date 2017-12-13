@@ -4,6 +4,7 @@ var path = require('path')
 var mongoose = require('mongoose')
 var fs = require('fs')
 var User = require('./models/user.js')
+var Picture = require('./models/picture.js')
 var bodyParser = require('body-parser')
 var session = require('express-session');
 
@@ -29,12 +30,6 @@ app.use(bodyParser.urlencoded({// to support URL-encoded bodies
 })); 
 
 //Schema and model for database
-
-//Picture
-var pictureSchema = mongoose.Schema({
-	filepath: String
-})
-var Picture = mongoose.model('Picture',pictureSchema)
 
 //Connect to mongodb
 mongoose.connect('mongodb://localhost/test');
