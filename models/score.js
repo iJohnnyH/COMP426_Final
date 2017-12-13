@@ -18,5 +18,5 @@ var scoreSchema = new mongoose.Schema({
 	}
 });
 
-var Score = mongoose.model('Score', UserSchema);
+var Score = mongoose.model('Score', scoreSchema);
 module.exports = Score;
