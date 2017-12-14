@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<style>
+body{background-color:#99badd;
+	font-family: "Titillium", sans-serif;
+  }
+    
+/*form {
+    border: 3px solid #f1f1f1;
+}*/
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: none;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4c7daf;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 33.33%;
+    margin-right:30px;
+   float:left;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+h2{
+    font-family: "Titillium", sans-serif;
+	text-align: center;
+}
+label{font-family: "Titillium", sans-serif;
+	display: flex;
+	align-content: center;}
+	
+input.placeholder{
+	  text-align:center;
+}
+
+#loginError{
+    color: red
+}
+</style>
+
+<body>
+
+<h2>Login Form</h2>
+<p id = 'loginError'>Login Error! Check username and password!</p>
+
+<form action="/login" method = 'post'>
+  <div class="container">
+    <label><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+	  
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+    <button type="submit">Login</button>
+  </div>
+
+  <div class="container">
+    <button type="button" class="cancelbtn">Cancel</button>
+  </div>
+</form>
+
+<a href="/login/register">
+	<button type = "button">Register</button>
+</a>
+
+</body>
+</html>

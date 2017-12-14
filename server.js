@@ -99,7 +99,7 @@ app.post('/login', function(req,res, next){
 			if (error || !user) {
 				var err = new Error('Wrong email or password.');
 				err.status = 401;
-				return next(err);
+				res.sendFile('public/html/errorLogin.html', { root: __dirname })
 			} else {
 				req.session.userId = user._id;
 				return res.redirect('/');
@@ -118,9 +118,9 @@ app.post('/login/register', function (req, res, next) {
 	if (req.body.password != req.body.passwordConfirm) {
 		var err = new Error('Passwords do not match.');
 		err.status = 400;
-		res.send("Passwords do not match.");
+		res.sendFile('public/html/errorRegister.html', { root: __dirname })
 	}
-	if (req.body.email && req.body.password && req.body.passwordConfirm) {
+	if ((req.body.email && req.body.password && req.body.passwordConfirm) && req.body.password == req.body.passwordConfirm) {
 		var userData = {
 			email: req.body.email,
 			password: req.body.password,

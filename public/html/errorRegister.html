@@ -2,12 +2,13 @@
 <html lang = "en">
 <head>
 	<title>Register</title>
-	<link rel= "stylesheet" href = "/html/style.css">
+	<link rel= "stylesheet" href = "html/style.css">
 </head>
 	
 <body>
 	<h1>Register</h1>
 	<div class="register-form">
+		<p class="error">Error registering! Ensure passwords are the same!</p>
 		<form action="/login/register" method="post">
 			<input type="text" name="email" placeholder="E-mail" required="">
 			<input type="password" name="password" placeholder="Password" required="">
