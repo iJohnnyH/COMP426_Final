@@ -267,6 +267,7 @@ function gameOver(){
 						}
 					}
 					var scoreboard = $('#scoreboard');
+					scoreboard.text("# of moves: " + move);
 					var scorelist = $('#scorelist');
 					scorelist.empty();
 					for (var i = 0; i < data.length; i++){
@@ -280,7 +281,6 @@ function gameOver(){
 	document.onmousedown = null;
 	document.onmousemove = null;
 	document.onmouseup = null;
-	initPuzzle();
 }
 
 
@@ -296,6 +296,11 @@ function updatePicSelect(){
 			}
 		}
 	})
+}
+
+function playAgain(){
+	$('.close').click();
+	initPuzzle();
 }
 
 function picChange(){
