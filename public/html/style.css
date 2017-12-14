@@ -101,6 +101,7 @@ button{
     float: right;
     font-size: 28px;
     font-weight: bold;
+    visibility: hidden;
 }
 
 .close:hover,
