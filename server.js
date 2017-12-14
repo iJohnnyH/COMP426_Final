@@ -25,7 +25,7 @@ var storage = multer.diskStorage({
 var upload = multer({storage: storage})
 
 
-app.use(bodyParser.json() );// to support JSON-encoded bodies
+app.use(bodyParser.json());// to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({// to support URL-encoded bodies
   extended: true
 })); 
@@ -167,9 +167,33 @@ app.get('/game', function (req, res, next) {
 });
 
 app.get('/game/highscore', function(req,res,next){
-	var scores = {}
-	Score.find({'filepath' : req.body.image}).sort([score, -1]).exec(function(err, Score){
-		console.log(score)
+	var scores = []
+	var users = []
+	Picture.findOne({'filepath' : req.query.path}, '_id', function(err, pic){
+		if (pic == null){
+			var err = new Error('pic not found in db!')
+			next(error)
+		}
+		Score.find({
+			picture: pic._id
+		}).limit(3).
+		sort({score: 1}).
+		select('user score userName').exec(function(err, highscore){
+			if (err){
+				return next(error);
+			}
+			else{
+				for (var i = 0; i < highscore.length; i++){
+					var indivScores = {
+						moves: highscore[i].score,
+						user: highscore[i].userName
+					}
+					scores.push(indivScores)
+				}
+				console.log(scores)
+				res.send(scores)
+			}
+		})
 	})
 })
 
@@ -196,7 +220,8 @@ app.post('/game/highscore', function(req, res, next){
 				var score = new Score({
 					user: req.session.userId,
 					score: req.body.moves,
-					picture: pic._id
+					picture: pic._id,
+					userName: user.email
 				})
 				score.save(function(err){
 					if (err) console.log(err)
