@@ -13,7 +13,7 @@ h1{
 }
 
 input[type=file]{
-	width: 30%;
+	width: 20%;
    	padding: 12px 20px;
    	margin: 8px 0;
     box-sizing: border-box;
@@ -31,7 +31,7 @@ input[type=submit]{
 	font-family: "Titillium", sans-serif;
 }
 
-input[type=text], input[type=password], input[type=submit] {
+input[type=text], input[type=password]/*, input[type=submit]*/ {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -43,7 +43,7 @@ input[type=text], input[type=password], input[type=submit] {
 #picUpload {
 	position: relative;
 	display: block;
-	text-align: left;
+	text-align: center;
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 12px;
 }
