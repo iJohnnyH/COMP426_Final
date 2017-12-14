@@ -2,10 +2,10 @@ const PUZZLE_DIFFICULTY = 4;
 const PUZZLE_HOVER_TINT = '#009900';
 
 var imgPath;
- 
+
 var canvas;
 var stage;
- 
+
 var img;
 var pieces;
 var puzzleWidth;
@@ -14,7 +14,7 @@ var pieceWidth;
 var pieceHeight;
 var currentPiece;
 var currentDropPiece;
- 
+
 var mouse;
 
 var move;
@@ -25,28 +25,8 @@ function init(){
 	var select = document.getElementById('picSelect');
 	imgPath = select.value;
 	img.src = "../images/" + imgPath;
-    
-    //GameOver popup (modal) stuff
-    // Get the modal
-    var modal = document.getElementById('myModal');
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // opens up the modal
-    modal.style.display = "block";
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    } 
+	
+	
 }
 
 function initGame(path){
@@ -261,15 +241,38 @@ function gameOver(){
 		data: JSON.stringify(score),
 		contentType: "application/json",
 		success: function(data){
-			var image = {
-				image: imgPath
-			}
 			$.ajax({
 				url: "/game/highscore",
 				method: "GET",
-				data: JSON.stringify(image),
-				contentType: "application/json",
+				data: {path: imgPath},
+				dataType: "json",
 				success: function(data){
+					//GameOver popup (modal) stuff
+					// Get the modal
+					var modal = document.getElementById('myModal');
+					// Get the <span> element that closes the modal
+					var span = document.getElementsByClassName("close")[0];
+					
+					// opens up the modal
+					modal.style.display = "block";
+					
+					// When the user clicks on <span> (x), close the modal
+					span.onclick = function() {
+						modal.style.display = "none";
+					}
+					// When the user clicks anywhere outside of the modal, close it
+					window.onclick = function(event) {
+						if (event.target == modal) {
+							modal.style.display = "none";
+						}
+					}
+					var scoreboard = $('#scoreboard');
+					var scorelist = $('#scorelist');
+					scorelist.empty();
+					alert(data[0]['user'])
+					for (var i = 0; i < data.length; i++){
+						scorelist.append('<li>'+ data[i]['user'] + ': ' + data[i]['moves'] + '</li>');
+					}
 					
 				}
 			})
