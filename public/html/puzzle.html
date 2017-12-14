@@ -4,7 +4,7 @@
 	<title>HTML5 Puzzle</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>	
 	<script src="../js/puzzle.js"></script>
-	<link rel= "stylesheet" href = "style.css">
+	<link rel= "stylesheet" href = "/html/style.css">
 </head>
 	
 <h1>TilePuzzle</h1>
@@ -15,11 +15,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <span class="close">&times;</span>
-        <h2>Modal Header</h2>
+        <h2>Top 3 Scores for this image!</h2>
       </div>
       <div class="modal-body">
-        <p>Some text in the Modal Body</p>
-        <p>Some other text...</p>
+        <p id = 'scoreboard'><ol id = "scorelist"></ol></p>
       </div>
       <div class="modal-footer">
         <button id="playAgain">Play Again</button>
