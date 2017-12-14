@@ -31,7 +31,7 @@
 <script>updatePicSelect()</script>
 <body onload="initGame('kmp.jpg')" >
 	<p>Puzzle game</p>
-	<canvas id="canvas"></canvas>
+	<div id="canvasWrapper"><canvas id="canvas"></canvas></div>
 	<form id="picUpload" enctype="multipart/form-data" method="post" action="/api/upload">
 		<input id="fileupload" name="pic" type="file" size = "70"/>
 		<input type="submit" value="Submit" id="submit"/>
