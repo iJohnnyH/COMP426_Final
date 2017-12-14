@@ -291,6 +291,7 @@ function updatePicSelect(){
 		url: '/api/images',
 		method: 'GET',
 		success: function(response){
+			select.innerHTML += '<option disabled selected value> --SELECT AN IMAGE-- </option>'
 			for (i = 0; i < response.length; i++){
 				select.innerHTML += '<option value = ' + response[i] + '>' + response[i] + '</option>';
 			}
