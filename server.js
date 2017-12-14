@@ -50,7 +50,8 @@ app.use(session({
 //API Routes
 //Homepage
 app.get('/', function(req,res){
-	res.sendFile('public/html/puzzle.html', { root: __dirname })
+	//res.sendFile('public/html/puzzle.html', { root: __dirname })
+	res.redirect('/game')
 })
 
 //Upload button
