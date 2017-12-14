@@ -8,6 +8,10 @@ var scoreSchema = new mongoose.Schema({
 		unique: false,
 		required: true,
 	},
+	userName: {
+		type: String,
+		required: false		
+	}, 
 	score: {
 		type: Number,
 		required: true
