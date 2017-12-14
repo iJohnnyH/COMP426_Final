@@ -269,7 +269,6 @@ function gameOver(){
 					var scoreboard = $('#scoreboard');
 					var scorelist = $('#scorelist');
 					scorelist.empty();
-					alert(data[0]['user'])
 					for (var i = 0; i < data.length; i++){
 						scorelist.append('<li>'+ data[i]['user'] + ': ' + data[i]['moves'] + '</li>');
 					}
