@@ -72,7 +72,7 @@ input[type=text], input[type=password]/*, input[type=submit]*/ {
 }
 
 button{
-	width: 33.33%;
+	width: 50%;
 	height: 20%;
    	padding: 12px 20px;
    	margin: 8px 0;
